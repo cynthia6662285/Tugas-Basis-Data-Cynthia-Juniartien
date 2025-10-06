@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengenal Conceptual DB - CYNTHIA JUNIARTIEN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <button class="burger" id="burgerMenu" aria-label="Menu">☰</button>
+        <div class="logo">CYNTHIA JUNIARTIEN</div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <button class="toggle-theme" id="toggleTheme">🌙</button>
+    </header>
+
+    <div class="container">
+        <article class="post-detail fade-in">
+            <div class="post-header">
+                <h1>Mengenal Conceptual DB</h1>
+                <div class="post-meta-large">Diposting pada 27 September 2025 | Oleh Cynthia Juniartien | Kategori: Conceptual DB</div>
+            </div>
+
+            <img src="assets/post2.jpg" alt="Mengenal Conceptual DB" class="post-image">
+
+            <div class="post-content">
+                <h2>Pengertian Conceptual Database</h2>
+                <p>Conceptual Database adalah gambaran umum atau model logis dari sebuah basis data yang menunjukkan hubungan antar data tanpa memperhatikan detail teknis penyimpanan.</p>
+                
+                <h3>Pemahaman Sederhana</h3>
+                <p>Sederhananya, ini seperti peta konsep yang menjelaskan data apa saja yang ada dan bagaimana hubungan antar data tersebut, tanpa perlu tahu bagaimana data disimpan di komputer.</p>
+
+                <h3>Visualisasi dengan ERD</h3>
+                <p>Biasanya, conceptual database divisualisasikan menggunakan ERD (Entity Relationship Diagram) yang menampilkan:</p>
+                <ul>
+                    <li><strong>Entity:</strong> Objek seperti Mahasiswa, Dosen, Mata Kuliah</li>
+                    <li><strong>Relationship:</strong> Hubungan antar entity, misalnya Mahasiswa mengambil Mata Kuliah</li>
+                    <li><strong>Attribute:</strong> Ciri-ciri dari setiap entity</li>
+                </ul>
+
+                <h4>Contoh ERD Sederhana:</h4>
+                <div class="code-block">
+                    [Mahasiswa] ----〈mengambil〉---- [Mata_Kuliah]<br>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                [Dosen] ----〈mengajar〉-------
+                </div>
+
+                <h3>Tujuan Conceptual Database</h3>
+                <p>Tujuannya adalah memberikan gambaran yang jelas dan mudah dimengerti tentang struktur basis data, sebelum masuk ke tahap desain fisik dan implementasi.</p>
+
+                <h4>Manfaat menggunakan Conceptual Model:</h4>
+                <ol>
+                    <li>Memudahkan komunikasi antara pengguna dan developer</li>
+                    <li>Memberikan panduan untuk desain fisik database</li>
+                    <li>Mengidentifikasi kebutuhan data sejak awal</li>
+                    <li>Menghindari kesalahan dalam desain database</li>
+                </ol>
+
+                <blockquote>
+                    "Conceptual database adalah blueprint dari sistem basis data yang akan dibangun"
+                </blockquote>
+
+                <p>Dengan conceptual database yang baik, pengembangan sistem basis data menjadi lebih terarah dan efisien.</p>
+            </div>
+
+            <div class="post-navigation">
+                <a href="post2.html" class="nav-btn">← Post Sebelumnya</a>
+                <a href="post4.html" class="nav-btn next">Post Berikutnya →</a>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Blog Pribadi Cynthia Juniartien &copy; 2025</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+    <script src="js/script.js"></script>
+</body>
+</html>

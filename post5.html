@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entitas (Entity) - CYNTHIA JUNIARTIEN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <button class="burger" id="burgerMenu" aria-label="Menu">☰</button>
+        <div class="logo">CYNTHIA JUNIARTIEN</div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <button class="toggle-theme" id="toggleTheme">🌙</button>
+    </header>
+
+    <div class="container">
+        <article class="post-detail fade-in">
+            <div class="post-header">
+                <h1>Entitas (Entity)</h1>
+                <div class="post-meta-large">Diposting pada 04 Oktober 2025 | Oleh Cynthia Juniartien | Kategori: Entitas</div>
+            </div>
+
+            <img src="assets/post4.jpg" alt="Entitas (Entity)" class="post-image">
+
+            <div class="post-content">
+                <h2>Pengertian Entitas</h2>
+                <p>Entitas adalah objek nyata atau konsep yang dapat dibedakan dari yang lain, dan memiliki data yang ingin disimpan dalam sistem. Entitas bisa berupa orang, benda, tempat, atau kejadian yang berhubungan dengan sistem.</p>
+                
+                <h3>Contoh Umum</h3>
+                <p><strong>Dalam sistem kampus:</strong> Mahasiswa, Dosen, Mata Kuliah, Kelas.</p>
+                <p><strong>Dalam sistem toko:</strong> Pelanggan, Barang, Transaksi, Kasir.</p>
+
+                <h3>Contoh Kehidupan Sehari-hari</h3>
+                <p>Misalnya di perpustakaan, entitasnya bisa berupa:</p>
+                <ul>
+                    <li><strong>Anggota</strong> - orang yang meminjam buku</li>
+                    <li><strong>Buku</strong> - koleksi yang dipinjam</li>
+                    <li><strong>Peminjaman</strong> - aktivitas meminjam buku</li>
+                </ul>
+
+                <p>Artinya, sistem ingin menyimpan data tentang Anggota, Buku, dan Peminjaman karena ketiganya penting untuk sistem perpustakaan.</p>
+
+                <h3>Karakteristik Entitas</h3>
+                <ol>
+                    <li><strong>Dapat Diidentifikasi:</strong> Memiliki identifier yang unik</li>
+                    <li><strong>Memiliki Atribut:</strong> Memiliki karakteristik yang menjelaskannya</li>
+                    <li><strong>Dapat Berpartisipasi dalam Relasi:</strong> Dapat berhubungan dengan entitas lain</li>
+                    <li><strong>Relevan dengan Sistem:</strong> Penting untuk disimpan dalam database</li>
+                </ol>
+
+                <h4>Contoh dalam Notasi ERD:</h4>
+                <div class="code-block">
+                    ┌─────────────┐<br>
+                    │   MAHASISWA  │<br>
+                    └─────────────┘<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+                    ┌─────────────┐<br>
+                    │  MATA_KULIAH │<br>
+                    └─────────────┘
+                </div>
+
+                <h3>Jenis-jenis Entitas</h3>
+                <ul>
+                    <li><strong>Entitas Kuat (Strong Entity):</strong> Dapat berdiri sendiri tanpa entitas lain</li>
+                    <li><strong>Entitas Lemah (Weak Entity):</strong> Bergantung pada entitas lain untuk identitasnya</li>
+                    <li><strong>Entitas Asosiatif:</strong> Menghubungkan dua atau lebih entitas</li>
+                </ul>
+
+                <blockquote>
+                    "Pemahaman yang baik tentang entitas adalah kunci utama dalam merancang database yang efektif"
+                </blockquote>
+
+                <p>Dengan mengidentifikasi entitas dengan tepat, kita dapat merancang struktur database yang sesuai dengan kebutuhan sistem.</p>
+            </div>
+
+            <div class="post-navigation">
+                <a href="post4.html" class="nav-btn">← Post Sebelumnya</a>
+                <a href="post6.html" class="nav-btn next">Post Berikutnya →</a>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Blog Pribadi Cynthia Juniartien &copy; 2025</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+    <script src="js/script.js"></script>
+</body>
+</html>

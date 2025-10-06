@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relasi (Relationship) - CYNTHIA JUNIARTIEN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <button class="burger" id="burgerMenu" aria-label="Menu">☰</button>
+        <div class="logo">CYNTHIA JUNIARTIEN</div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <button class="toggle-theme" id="toggleTheme">🌙</button>
+    </header>
+
+    <div class="container">
+        <article class="post-detail fade-in">
+            <div class="post-header">
+                <h1>Relasi (Relationship)</h1>
+                <div class="post-meta-large">Diposting pada 04 Oktober 2025 | Oleh Cynthia Juniartien | Kategori: Relasi</div>
+            </div>
+
+            <img src="assets/post6.jpg" alt="Relasi (Relationship)" class="post-image">
+
+            <div class="post-content">
+                <h2>Pengertian Relasi</h2>
+                <p>Relasi adalah hubungan antar entitas yang menunjukkan bagaimana satu entitas berinteraksi dengan entitas lain. Relasi menjelaskan keterkaitan data dalam sistem.</p>
+                
+                <h3>Contoh Umum</h3>
+                <ul>
+                    <li><strong>Mahasiswa mengambil Mata Kuliah</strong></li>
+                    <li><strong>Pelanggan melakukan Transaksi</strong></li>
+                    <li><strong>Dosen mengajar Kelas</strong></li>
+                </ul>
+                <p>Kata seperti <em>mengambil, melakukan, mengajar</em> → menunjukkan relasi antar entitas.</p>
+
+                <h3>Contoh Kehidupan Sehari-hari</h3>
+                <p>Di perpustakaan:</p>
+                <p><strong>Anggota meminjam Buku</strong></p>
+                <p>Artinya, ada hubungan antara entitas Anggota dan Buku melalui relasi meminjam. Biasanya relasi ini juga bisa punya atribut sendiri, misalnya:</p>
+                <ul>
+                    <li><strong>Tanggal Peminjaman</strong></li>
+                    <li><strong>Tanggal Pengembalian</strong></li>
+                    <li><strong>Status Peminjaman</strong></li>
+                </ul>
+
+                <h3>Derajat Relasi (Degree of Relationship)</h3>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Derajat</th>
+                            <th>Deskripsi</th>
+                            <th>Contoh</th>
+                            <th>Notasi ERD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Unary (1)</strong></td>
+                            <td>Relasi dalam entitas yang sama</td>
+                            <td>Karyawan mengawasi Karyawan</td>
+                            <td>┌─────┐←──┐<br>│ A   │   │<br>└─────┘───┘</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Binary (2)</strong></td>
+                            <td>Relasi antara 2 entitas</td>
+                            <td>Mahasiswa mengambil Mata_Kuliah</td>
+                            <td>┌─────┐──→┌─────┐<br>│ A   │    │ B   │<br>└─────┘←──└─────┘</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ternary (3)</strong></td>
+                            <td>Relasi antara 3 entitas</td>
+                            <td>Dosen mengajar Mata_Kuliah di Ruangan</td>
+                            <td>┌─────┐<br>│ A   │<br>└─────┘<br>&nbsp;&nbsp;↑<br>┌─────┐←→┌─────┐<br>│ B   │   │ C   │<br>└─────┘   └─────┘</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Kardinalitas Relasi</h3>
+                <p>Kardinalitas menunjukkan jumlah instance entitas yang dapat berpartisipasi dalam relasi:</p>
+                <ul>
+                    <li><strong>One-to-One (1:1):</strong> Satu entitas A berhubungan dengan satu entitas B</li>
+                    <li><strong>One-to-Many (1:N):</strong> Satu entitas A berhubungan dengan banyak entitas B</li>
+                    <li><strong>Many-to-Many (M:N):</strong> Banyak entitas A berhubungan dengan banyak entitas B</li>
+                </ul>
+
+                <h4>Contoh Implementasi dalam SQL:</h4>
+                <div class="code-block">
+                    -- One-to-Many: Satu jurusan memiliki banyak mahasiswa<br>
+                    CREATE TABLE Jurusan (<br>
+                    &nbsp;&nbsp;ID INT PRIMARY KEY,<br>
+                    &nbsp;&nbsp;Nama_Jurusan VARCHAR(50)<br>
+                    );<br><br>
+                    
+                    CREATE TABLE Mahasiswa (<br>
+                    &nbsp;&nbsp;NIM VARCHAR(10) PRIMARY KEY,<br>
+                    &nbsp;&nbsp;Nama VARCHAR(100),<br>
+                    &nbsp;&nbsp;Jurusan_ID INT,<br>
+                    &nbsp;&nbsp;FOREIGN KEY (Jurusan_ID) REFERENCES Jurusan(ID)<br>
+                    );<br><br>
+                    
+                    -- Many-to-Many: Banyak mahasiswa mengambil banyak mata kuliah<br>
+                    CREATE TABLE Mahasiswa_MataKuliah (<br>
+                    &nbsp;&nbsp;NIM VARCHAR(10),<br>
+                    &nbsp;&nbsp;Kode_MK VARCHAR(10),<br>
+                    &nbsp;&nbsp;Semester VARCHAR(10),<br>
+                    &nbsp;&nbsp;PRIMARY KEY (NIM, Kode_MK),<br>
+                    &nbsp;&nbsp;FOREIGN KEY (NIM) REFERENCES Mahasiswa(NIM),<br>
+                    &nbsp;&nbsp;FOREIGN KEY (Kode_MK) REFERENCES Mata_Kuliah(Kode)<br>
+                    );
+                </div>
+
+                <h3>Kesimpulan Singkat</h3>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Konsep</th>
+                            <th>Pengertian</th>
+                            <th>Contoh dalam Perpustakaan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Entitas</strong></td>
+                            <td>Objek yang datanya ingin disimpan</td>
+                            <td>Anggota, Buku, Peminjaman</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Atribut</strong></td>
+                            <td>Ciri-ciri dari entitas</td>
+                            <td>Nama Anggota, Judul Buku, Tanggal Peminjaman</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Relasi</strong></td>
+                            <td>Hubungan antar entitas</td>
+                            <td>Anggota meminjam Buku</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <blockquote>
+                    "Relasi adalah jiwa dari database relational yang menghubungkan data menjadi informasi yang bermakna"
+                </blockquote>
+
+                <p>Pemahaman tentang relasi sangat penting dalam merancang database yang efisien dan dapat memenuhi kebutuhan bisnis.</p>
+            </div>
+
+            <div class="post-navigation">
+                <a href="post6.html" class="nav-btn">← Post Sebelumnya</a>
+                <a href="index.html" class="nav-btn next">Kembali ke Beranda →</a>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Blog Pribadi Cynthia Juniartien &copy; 2025</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+    <script src="js/script.js"></script>
+</body>
+</html>

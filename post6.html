@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atribut (Attribute) - CYNTHIA JUNIARTIEN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <button class="burger" id="burgerMenu" aria-label="Menu">☰</button>
+        <div class="logo">CYNTHIA JUNIARTIEN</div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <button class="toggle-theme" id="toggleTheme">🌙</button>
+    </header>
+
+    <div class="container">
+        <article class="post-detail fade-in">
+            <div class="post-header">
+                <h1>Atribut (Attribute)</h1>
+                <div class="post-meta-large">Diposting pada 04 Oktober 2025 | Oleh Cynthia Juniartien | Kategori: Atribut</div>
+            </div>
+
+            <img src="assets/post5.jpg" alt="Atribut (Attribute)" class="post-image">
+
+            <div class="post-content">
+                <h2>Pengertian Atribut</h2>
+                <p>Atribut adalah ciri-ciri atau informasi yang menjelaskan entitas. Setiap entitas pasti memiliki beberapa atribut yang membuatnya bisa dibedakan dari entitas lain.</p>
+                
+                <h3>Contoh Umum</h3>
+                <p>Jika entitasnya Mahasiswa, maka atributnya bisa berupa:</p>
+                <ul>
+                    <li><strong>NIM</strong> (Nomor Induk Mahasiswa) → atribut kunci (primary key)</li>
+                    <li><strong>Nama</strong> → informasi dasar</li>
+                    <li><strong>Tanggal Lahir</strong> → data personal</li>
+                    <li><strong>Alamat</strong> → informasi kontak</li>
+                    <li><strong>Jurusan</strong> → informasi akademik</li>
+                </ul>
+
+                <h3>Contoh Kehidupan Sehari-hari</h3>
+                <p>Pada entitas Buku di perpustakaan:</p>
+                <ul>
+                    <li><strong>Kode Buku</strong> - identifier unik</li>
+                    <li><strong>Judul Buku</strong> - informasi utama</li>
+                    <li><strong>Pengarang</strong> - informasi penulis</li>
+                    <li><strong>Tahun Terbit</strong> - informasi publikasi</li>
+                    <li><strong>Kategori</strong> - klasifikasi buku</li>
+                </ul>
+
+                <p>Atribut-atribut ini menjelaskan karakteristik dari setiap buku.</p>
+
+                <h3>Jenis-jenis Atribut</h3>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Jenis Atribut</th>
+                            <th>Deskripsi</th>
+                            <th>Contoh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Simple/Atomic</strong></td>
+                            <td>Atribut yang tidak dapat dibagi lagi</td>
+                            <td>NIM, Tanggal Lahir</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Composite</strong></td>
+                            <td>Atribut yang dapat dibagi menjadi sub-atribut</td>
+                            <td>Alamat (jalan, kota, kode pos)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Single-valued</strong></td>
+                            <td>Hanya memiliki satu nilai</td>
+                            <td>Tanggal Lahir, NIM</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Multi-valued</strong></td>
+                            <td>Dapat memiliki banyak nilai</td>
+                            <td>Nomor Telepon, Hobi</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Derived</strong></td>
+                            <td>Nilai dapat dihitung dari atribut lain</td>
+                            <td>Usia (dari Tanggal Lahir)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Atribut Kunci (Key Attribute)</h3>
+                <p>Atribut kunci adalah atribut yang dapat mengidentifikasi entitas secara unik:</p>
+                <ul>
+                    <li><strong>Primary Key:</strong> Atribut pengidentifikasi utama</li>
+                    <li><strong>Candidate Key:</strong> Atribut yang berpotensi menjadi primary key</li>
+                    <li><strong>Foreign Key:</strong> Atribut yang menghubungkan ke entitas lain</li>
+                </ul>
+
+                <div class="code-block">
+                    -- Contoh implementasi atribut dalam SQL<br>
+                    CREATE TABLE Mahasiswa (<br>
+                    &nbsp;&nbsp;NIM VARCHAR(10) PRIMARY KEY,          -- Simple, Single-valued<br>
+                    &nbsp;&nbsp;Nama VARCHAR(100) NOT NULL,           -- Simple<br>
+                    &nbsp;&nbsp;Tanggal_Lahir DATE,                   -- Simple<br>
+                    &nbsp;&nbsp;Alamat TEXT,                          -- Composite<br>
+                    &nbsp;&nbsp;Email VARCHAR(100) UNIQUE,            -- Simple<br>
+                    &nbsp;&nbsp;Jurusan_ID INT,                       -- Foreign Key<br>
+                    &nbsp;&nbsp;FOREIGN KEY (Jurusan_ID) REFERENCES Jurusan(ID)<br>
+                    );
+                </div>
+
+                <blockquote>
+                    "Pemilihan atribut yang tepat menentukan kualitas dan efisiensi database"
+                </blockquote>
+
+                <p>Dengan memahami berbagai jenis atribut, kita dapat merancang struktur database yang optimal dan sesuai kebutuhan.</p>
+            </div>
+
+            <div class="post-navigation">
+                <a href="post5.html" class="nav-btn">← Post Sebelumnya</a>
+                <a href="post7.html" class="nav-btn next">Post Berikutnya →</a>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Blog Pribadi Cynthia Juniartien &copy; 2025</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+    <script src="js/script.js"></script>
+</body>
+</html>

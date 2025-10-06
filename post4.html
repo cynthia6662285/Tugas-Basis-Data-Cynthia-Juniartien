@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengenal Physical Model - CYNTHIA JUNIARTIEN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <button class="burger" id="burgerMenu" aria-label="Menu">☰</button>
+        <div class="logo">CYNTHIA JUNIARTIEN</div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <button class="toggle-theme" id="toggleTheme">🌙</button>
+    </header>
+
+    <div class="container">
+        <article class="post-detail fade-in">
+            <div class="post-header">
+                <h1>Mengenal Physical Model</h1>
+                <div class="post-meta-large">Diposting pada 27 September 2025 | Oleh Cynthia Juniartien | Kategori: Physical Model</div>
+            </div>
+
+            <img src="assets/post 3.jpg" alt="Mengenal Physical Model" class="post-image">
+
+            <div class="post-content">
+                <h2>Pengertian Physical Model</h2>
+                <p>Physical Model adalah model basis data yang menggambarkan bagaimana data benar-benar disimpan di dalam komputer. Berbeda dengan conceptual model yang hanya menjelaskan hubungan antar data secara umum, physical model sudah masuk ke detail teknis, seperti bentuk tabel, nama kolom, tipe data yang digunakan, serta aturan seperti primary key, foreign key, atau index.</p>
+                
+                <h3>Implementasi Nyata</h3>
+                <p>Dengan kata lain, physical model merupakan rancangan nyata yang nantinya bisa langsung diterjemahkan ke dalam perintah SQL untuk membangun basis data di sistem manajemen basis data.</p>
+
+                <h4>Contoh Physical Model:</h4>
+                <div class="code-block">
+                    -- Tabel Mahasiswa<br>
+                    CREATE TABLE Mahasiswa (<br>
+                    &nbsp;&nbsp;NIM INT PRIMARY KEY,<br>
+                    &nbsp;&nbsp;Nama VARCHAR(100) NOT NULL,<br>
+                    &nbsp;&nbsp;Tanggal_Lahir DATE,<br>
+                    &nbsp;&nbsp;Alamat TEXT,<br>
+                    &nbsp;&nbsp;Jurusan_ID INT,<br>
+                    &nbsp;&nbsp;FOREIGN KEY (Jurusan_ID) REFERENCES Jurusan(ID)<br>
+                    );<br><br>
+                    
+                    -- Tabel Jurusan<br>
+                    CREATE TABLE Jurusan (<br>
+                    &nbsp;&nbsp;ID INT PRIMARY KEY AUTO_INCREMENT,<br>
+                    &nbsp;&nbsp;Nama_Jurusan VARCHAR(50) UNIQUE NOT NULL,<br>
+                    &nbsp;&nbsp;Fakultas VARCHAR(50)<br>
+                    );
+                </div>
+
+                <h3>Perbedaan Conceptual vs Physical Model</h3>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Conceptual Model</th>
+                            <th>Physical Model</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tujuan</strong></td>
+                            <td>Memahami kebutuhan bisnis</td>
+                            <td>Implementasi teknis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Detail</strong></td>
+                            <td>High-level, umum</td>
+                            <td>Detail teknis lengkap</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemirsa</strong></td>
+                            <td>Pengguna bisnis</td>
+                            <td>Developer & DBA</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Output</strong></td>
+                            <td>ER Diagram</td>
+                            <td>SQL Script</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Komponen Physical Model</h3>
+                <ul>
+                    <li><strong>Tabel:</strong> Struktur penyimpanan data</li>
+                    <li><strong>Kolom:</strong> Field dalam tabel dengan tipe data spesifik</li>
+                    <li><strong>Primary Key:</strong> Identifier unik untuk setiap record</li>
+                    <li><strong>Foreign Key:</strong> Hubungan antar tabel</li>
+                    <li><strong>Index:</strong> Optimasi pencarian data</li>
+                    <li><strong>Constraint:</strong> Aturan integritas data</li>
+                </ul>
+
+                <p>Dari gambaran physical model inilah database dapat dibuat dan dijalankan secara nyata di komputer.</p>
+            </div>
+
+            <div class="post-navigation">
+                <a href="post3.html" class="nav-btn">← Post Sebelumnya</a>
+                <a href="post5.html" class="nav-btn next">Post Berikutnya →</a>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Blog Pribadi Cynthia Juniartien &copy; 2025</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+    <script src="js/script.js"></script>
+</body>
+</html>

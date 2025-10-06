@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Pribadi - About</title>
+    <link rel="stylesheet" href="css/styles-about.css">
+    <script>// about.js - JavaScript untuk halaman About
+
+// Toggle dark/light mode
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleTheme = document.createElement('button');
+    toggleTheme.className = 'toggle-theme';
+    toggleTheme.innerHTML = '🌓';
+    
+    // Tambahkan tombol toggle ke navigasi
+    const nav = document.querySelector('nav ul');
+    const li = document.createElement('li');
+    li.appendChild(toggleTheme);
+    nav.appendChild(li);
+    
+    const body = document.body;
+    
+    // Cek preferensi pengguna dari localStorage
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+        body.classList.add('dark-mode');
+        toggleTheme.innerHTML = '☀️';
+    }
+    
+    toggleTheme.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        // Simpan preferensi pengguna
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            toggleTheme.innerHTML = '☀️';
+        } else {
+            localStorage.setItem('theme', 'light');
+            toggleTheme.innerHTML = '🌓';
+        }
+    });
+    
+    // Tambahkan animasi fade-in
+    const aboutContent = document.querySelector('.about-content');
+    aboutContent.classList.add('fade-in');
+});</script>
+    
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">About Me</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current"><a href="about.html">About</a></li>
+                   
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <section class="about-content">
+            <h2>Tentang Saya</h2>
+            <img src="assets/G1.jpg" alt="Foto Profil" class="profile-img">
+            <p>Halo! Perkenalkan, saya Cynthia Juniartien, seorang mahasiswa yang sedang mempelajari Web Development dalam mata kuliah Basis Data.
+Saat ini, saya sedang berusaha mengembangkan kemampuan dan keterampilan saya dalam pembuatan website.
+Apabila terdapat kekurangan atau kesalahan pada website ini, saya mohon maaf yang sebesar-besarnya.
+Terima kasih atas perhatian dan pengertiannya! ✨</p>
+            
+            <div class="student-info">
+                <h3>Informasi Mahasiswa</h3>
+                <p><strong>NIM:</strong> 24416255201037</p>
+                <p><strong>Prodi:</strong> Teknik Informatika</p>
+                <p><strong>Fakultas:</strong> Ilmu Komputer</p>
+                <p><strong>Universitas:</strong> Buana Perjuangan Karawang</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Blog Pribadi Cynthia Juniartien &copy; 2024</p>
+        </div>
+    </footer>
+</body>
+</html>
