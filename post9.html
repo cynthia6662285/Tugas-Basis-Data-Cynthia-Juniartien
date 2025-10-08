@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relation pada ERD - CYNTHIA JUNIARTIEN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <button class="burger" id="burgerMenu" aria-label="Menu">☰</button>
+        <div class="logo">CYNTHIA JUNIARTIEN</div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <button class="toggle-theme" id="toggleTheme">🌙</button>
+    </header>
+
+    <div class="container">
+        <article class="post-detail fade-in">
+            <div class="post-header">
+                <h1>🧩 Apa Itu Relation pada ERD?</h1>
+                <div class="post-meta-large">Diposting pada 10 Oktober 2025 | Oleh Cynthia Juniartien | Kategori: ERD Relation</div>
+            </div>
+
+            <img src="css/assets/post9.jpg" alt="Relation pada ERD" class="post-image">
+
+            <div class="post-content">
+                <p><strong>Relation (Hubungan)</strong> pada ERD adalah keterkaitan antara dua atau lebih entitas (tabel) dalam suatu sistem basis data. Relation digunakan untuk menunjukkan bagaimana data di satu tabel berhubungan dengan data di tabel lain.</p>
+
+                <p>Setiap hubungan punya derajat (cardinality), yaitu jumlah entitas yang dapat saling terhubung dalam relasi tersebut.</p>
+
+                <h2>Jenis-jenis Relationship pada ERD</h2>
+                
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Jenis Relasi</th>
+                            <th>Simbol</th>
+                            <th>Contoh</th>
+                            <th>Penjelasan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>One-to-One (1:1)</strong></td>
+                            <td>🔹</td>
+                            <td>1 Mahasiswa ↔ 1 Kartu Identitas</td>
+                            <td>Satu mahasiswa hanya punya satu kartu identitas.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>One-to-Many (1:N)</strong></td>
+                            <td>🔸</td>
+                            <td>1 Dosen ↔ Banyak Mahasiswa</td>
+                            <td>Satu dosen bisa membimbing banyak mahasiswa.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Many-to-Many (M:N)</strong></td>
+                            <td>⚠️</td>
+                            <td>Banyak Mahasiswa ↔ Banyak Mata Kuliah</td>
+                            <td>Mahasiswa bisa ambil banyak mata kuliah, dan satu mata kuliah bisa diikuti banyak mahasiswa.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>🚫 Mengapa Many-to-Many Tidak Baik Digunakan pada ERD?</h2>
+
+                <p>Relasi Many-to-Many (M:N) sebenarnya tidak bisa langsung diterapkan ke dalam database relasional, karena akan menyebabkan:</p>
+
+                <ul>
+                    <li><strong>Redundansi data (data ganda)</strong> – Satu data bisa berulang di beberapa baris, membuat penyimpanan tidak efisien.</li>
+                    <li><strong>Kesulitan saat query dan update data</strong> – Sulit memastikan konsistensi antar entitas yang saling berhubungan banyak-banyak.</li>
+                    <li><strong>Tidak sesuai dengan normalisasi database</strong> – Bentuk relasi ini melanggar aturan normalisasi (khususnya 1NF dan 3NF).</li>
+                </ul>
+
+                <h2>💡 Solusi: Gunakan Tabel Relasi (Tabel Penghubung)</h2>
+
+                <p>Untuk menghindari masalah relasi M:N, hubungan tersebut harus dipecah menjadi dua relasi 1:N menggunakan tabel penghubung (junction table).</p>
+
+                <div class="code-block">
+                    <strong>Contoh: Relasi Mahasiswa dan Mata Kuliah</strong><br><br>
+                    <strong>Entitas:</strong><br>
+                    - Mahasiswa (nim, nama, jurusan)<br>
+                    - Mata_Kuliah (kode_mk, nama_mk, sks)<br><br>
+                    <strong>Tabel Penghubung:</strong><br>
+                    - KRS (id_krs, nim, kode_mk, semester, tahun_ajaran)
+                </div>
+
+                <p>Dengan tabel penghubung KRS, relasi Many-to-Many antara Mahasiswa dan Mata_Kuliah dipecah menjadi:</p>
+                <ul>
+                    <li>Mahasiswa (1) → KRS (N)</li>
+                    <li>Mata_Kuliah (1) → KRS (N)</li>
+                </ul>
+
+                <h2>🧠 Kesimpulan</h2>
+                
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Hal</th>
+                            <th>Penjelasan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Relation</strong></td>
+                            <td>Hubungan antar tabel pada ERD</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Many-to-Many</strong></td>
+                            <td>Hubungan banyak ke banyak antar entitas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Masalahnya</strong></td>
+                            <td>Menyebabkan duplikasi dan inkonsistensi data</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Solusinya</strong></td>
+                            <td>Gunakan tabel relasi (junction table) untuk memecah menjadi dua relasi One-to-Many</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <blockquote>
+                    "Pemahaman yang baik tentang jenis-jenis relasi dalam ERD sangat penting untuk merancang struktur database yang efisien, konsisten, dan mudah dikelola."
+                </blockquote>
+
+                <p>Dengan menggunakan tabel penghubung, kita dapat menghindari masalah redundansi data dan memastikan integritas referensial dalam sistem basis data.</p>
+            </div>
+
+            <div class="post-navigation">
+                <a href="post8.html" class="nav-btn">← Post Sebelumnya</a>
+                <a href="index.html" class="nav-btn next">Kembali ke Beranda →</a>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Blog Pribadi Cynthia Juniartien &copy; 2025</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+    <script src="js/script.js"></script>
+</body>
+</html>
