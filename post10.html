@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengertian Normalisasi dalam ERD - CYNTHIA JUNIARTIEN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <button class="burger" id="burgerMenu" aria-label="Menu">☰</button>
+        <div class="logo">CYNTHIA JUNIARTIEN</div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <button class="toggle-theme" id="toggleTheme">🌙</button>
+    </header>
+
+    <div class="container">
+        <article class="post-detail fade-in">
+            <div class="post-header">
+                <h1>Pengertian Normalisasi dalam ERD</h1>
+                <div class="post-meta-large">Diposting pada 15 Oktober 2025 | Oleh Cynthia Juniartien | Kategori: Normalisasi</div>
+            </div>
+
+            <img src="css/assets/erd-2.webp" alt="Normalisasi dalam ERD" class="post-image">
+
+            <div class="post-content">
+                <h2>Apa itu Normalisasi?</h2>
+                <p>Normalisasi adalah proses merancang struktur tabel dalam basis data agar data tersimpan secara efisien, tidak ada duplikasi data (redundansi), dan konsistensi antar data tetap terjaga.</p>
+                
+                <p>Normalisasi biasanya dilakukan setelah membuat ERD (Entity Relationship Diagram) — jadi dari hubungan entitas dan atribut di ERD, kamu pecah dan atur lagi ke bentuk tabel yang "bersih" dan efisien.</p>
+
+                <h2>Tujuan Normalisasi</h2>
+                <ul>
+                    <li><strong>Menghilangkan data ganda (redundansi)</strong> → supaya data tidak berulang-ulang di banyak tempat.</li>
+                    <li><strong>Menjaga integritas data</strong> → kalau satu data berubah, cukup diubah di satu tempat saja.</li>
+                    <li><strong>Mempermudah perawatan (maintenance)</strong> → struktur tabel jadi rapi dan mudah dikembangkan.</li>
+                    <li><strong>Meningkatkan efisiensi penyimpanan</strong> → karena data disimpan tanpa pengulangan yang tidak perlu.</li>
+                </ul>
+
+                <h2>Tahapan Normalisasi (Normal Forms)</h2>
+                <p>Biasanya dilakukan bertahap — dari bentuk 1NF sampai 3NF, bahkan BCNF untuk kasus kompleks.</p>
+
+                <h3>1NF (First Normal Form)</h3>
+                <p>Setiap kolom berisi nilai atomik (tidak bisa dipecah lagi).</p>
+                
+                <div class="nf-example">
+                    <h4>Contoh sebelum 1NF:</h4>
+                    <div class="nf-before">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>NIM</th>
+                                    <th>Nama</th>
+                                    <th>MataKuliah</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>101</td>
+                                    <td>Daino</td>
+                                    <td>Algoritma, Basis Data</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Kolom MataKuliah berisi lebih dari satu nilai, jadi tidak 1NF.</p>
+                    </div>
+                    
+                    <h4>Sesudah 1NF:</h4>
+                    <div class="nf-after">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>NIM</th>
+                                    <th>Nama</th>
+                                    <th>MataKuliah</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>101</td>
+                                    <td>Daino</td>
+                                    <td>Algoritma</td>
+                                </tr>
+                                <tr>
+                                    <td>101</td>
+                                    <td>Daino</td>
+                                    <td>Basis Data</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h3>2NF (Second Normal Form)</h3>
+                <p>Sudah 1NF, dan semua atribut non-primary key bergantung pada seluruh primary key, bukan sebagian.</p>
+                
+                <div class="nf-example">
+                    <h4>Contoh sebelum 2NF:</h4>
+                    <div class="nf-before">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>NIM</th>
+                                    <th>Kode_MK</th>
+                                    <th>Nama_Mhs</th>
+                                    <th>Nama_MK</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>101</td>
+                                    <td>MK001</td>
+                                    <td>Daino</td>
+                                    <td>Algoritma</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Nama_Mhs hanya bergantung pada NIM, bukan pada kombinasi (NIM, Kode_MK).</p>
+                    </div>
+                    
+                    <h4>Sesudah 2NF:</h4>
+                    <div class="nf-after">
+                        <p><strong>Tabel Mahasiswa:</strong> (NIM, Nama_Mhs)</p>
+                        <p><strong>Tabel MataKuliah:</strong> (Kode_MK, Nama_MK)</p>
+                        <p><strong>Tabel KRS:</strong> (NIM, Kode_MK)</p>
+                    </div>
+                </div>
+
+                <h3>3NF (Third Normal Form)</h3>
+                <p>Sudah 2NF, dan tidak ada atribut non-key yang bergantung pada atribut non-key lainnya.</p>
+                
+                <div class="nf-example">
+                    <h4>Contoh sebelum 3NF:</h4>
+                    <div class="nf-before">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>NIM</th>
+                                    <th>Nama</th>
+                                    <th>Kode_Prodi</th>
+                                    <th>Nama_Prodi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>101</td>
+                                    <td>Daino</td>
+                                    <td>TI</td>
+                                    <td>Teknik Informatika</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Nama_Prodi tergantung pada Kode_Prodi (bukan pada NIM).</p>
+                    </div>
+                    
+                    <h4>Sesudah 3NF:</h4>
+                    <div class="nf-after">
+                        <p><strong>Mahasiswa:</strong> (NIM, Nama, Kode_Prodi)</p>
+                        <p><strong>Prodi:</strong> (Kode_Prodi, Nama_Prodi)</p>
+                    </div>
+                </div>
+
+                <div class="conclusion-box">
+                    <h3>Kesimpulan Sederhana:</h3>
+                    <table class="normalization-table">
+                        <thead>
+                            <tr>
+                                <th>Tahap</th>
+                                <th>Tujuan Utama</th>
+                                <th>Contoh Perbaikan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1NF</strong></td>
+                                <td>Tiap kolom hanya 1 nilai</td>
+                                <td>Pecah data yang berulang dalam 1 kolom</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2NF</strong></td>
+                                <td>Setiap kolom tergantung pada keseluruhan PK</td>
+                                <td>Pisahkan tabel yang punya ketergantungan sebagian</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3NF</strong></td>
+                                <td>Tidak ada ketergantungan antar non-key</td>
+                                <td>Pisahkan atribut yang bukan kunci tapi jadi acuan atribut lain</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <blockquote>
+                    "Normalisasi adalah seni mengorganisir data untuk menghindari redundansi dan anomali, menciptakan fondasi database yang kuat dan efisien"
+                </blockquote>
+
+                <p>Dengan memahami dan menerapkan normalisasi, kita dapat merancang basis data yang lebih optimal, mudah dirawat, dan konsisten dalam jangka panjang.</p>
+            </div>
+
+            <div class="post-navigation">
+                <a href="post9.html" class="nav-btn">← Post Sebelumnya</a>
+                <a href="index.html" class="nav-btn next">Kembali ke Beranda →</a>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Blog Pribadi Cynthia Juniartien &copy; 2025</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+    <script src="js/script.js"></script>
+</body>
+</html>
