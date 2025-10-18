@@ -646,4 +646,120 @@ footer {
     text-align: center;
     padding: 2rem;
     margin-top: 2rem;
+
+}
+
+/* Normalization Table Styles */
+.normalization-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: var(--light);
+    color: var(--dark);
+}
+
+.normalization-table th, .normalization-table td {
+    border: 1px solid var(--gray-light);
+    padding: 12px;
+    text-align: left;
+}
+
+.normalization-table th {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 600;
+}
+
+.normalization-table tr:nth-child(even) {
+    background-color: var(--gray-light);
+}
+
+.normalization-table tr:hover {
+    background-color: rgba(108, 99, 255, 0.1);
+}
+
+/* NF Example Styles */
+.nf-example {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: var(--gray-light);
+}
+
+.nf-example h4 {
+    margin-top: 0;
+    color: var(--primary);
+}
+
+.nf-before, .nf-after {
+    margin: 10px 0;
+}
+
+.nf-before table, .nf-after table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    background-color: var(--light);
+}
+
+.nf-before th, .nf-before td, .nf-after th, .nf-after td {
+    border: 1px solid var(--gray-light);
+    padding: 8px;
+    text-align: left;
+    color: var(--dark);
+}
+
+.nf-before th, .nf-after th {
+    background-color: var(--primary-light);
+    color: white;
+}
+
+.nf-before {
+    border-left: 4px solid #e74c3c;
+}
+
+.nf-after {
+    border-left: 4px solid #27ae60;
+}
+
+.conclusion-box {
+    background-color: rgba(52, 152, 219, 0.1);
+    border-left: 4px solid var(--primary);
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 5px;
+}
+
+/* Dark mode adjustments for tables */
+.dark-mode .normalization-table,
+.dark-mode .nf-before table,
+.dark-mode .nf-after table {
+    background-color: var(--gray-light);
+}
+
+.dark-mode .normalization-table th,
+.dark-mode .nf-before th,
+.dark-mode .nf-after th {
+    background-color: var(--primary-dark);
+}
+
+.dark-mode .nf-example {
+    background-color: var(--dark);
+}
+
+@media (max-width: 768px) {
+    .normalization-table,
+    .nf-before table,
+    .nf-after table {
+        font-size: 0.9rem;
+    }
+    
+    .normalization-table th,
+    .normalization-table td,
+    .nf-before th,
+    .nf-before td,
+    .nf-after th,
+    .nf-after td {
+        padding: 8px;
+    }
 }
