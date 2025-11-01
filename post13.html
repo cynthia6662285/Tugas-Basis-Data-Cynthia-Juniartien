@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Tutorial: ERD Denormalisasi - CYNTHIA JUNIARTIEN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <button class="burger" id="burgerMenu" aria-label="Menu">☰</button>
+        <div class="logo">CYNTHIA JUNIARTIEN</div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <button class="toggle-theme" id="toggleTheme">🌙</button>
+    </header>
+
+    <div class="container">
+        <article class="post-detail fade-in">
+            <div class="post-header">
+                <h1>Video Tutorial: ERD Denormalisasi untuk Optimasi Performa</h1>
+                <div class="post-meta-large">Diposting pada 30 Oktober 2025 | Oleh Cynthia Juniartien | Kategori: Tutorial ERD</div>
+            </div>
+
+            <img src="css/assets/Youtube Download.jpg" alt="ERD Denormalisasi" class="post-image">
+
+            <div class="post-content">
+                <h2>🎬 Tutorial Lengkap: Konsep dan Implementasi ERD Denormalisasi</h2>
+                <p>Dalam video tutorial ini, kita akan mempelajari tentang denormalisasi dalam Entity Relationship Diagram (ERD) - kapan dan mengapa kita perlu melakukan denormalisasi untuk optimasi performa database.</p>
+
+                <div class="youtube-section" style="margin: 2rem 0;">
+                    <h3>Video Tutorial ERD Denormalisasi</h3>
+                    <a href="https://youtu.be/example-link-erd-denormalisasi" target="_blank" class="youtube-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                        Tonton Tutorial di YouTube
+                    </a>
+                </div>
+
+                <h3>📋 Apa yang akan dipelajari?</h3>
+                <ul>
+                    <li><strong>Konsep Denormalisasi</strong> - Memahami kapan normalisasi perlu dikurangi</li>
+                    <li><strong>Trade-off Normalisasi vs Denormalisasi</strong> - Keuntungan dan kerugian</li>
+                    <li><strong>Scenario Penggunaan</strong> - Kasus dimana denormalisasi diperlukan</li>
+                    <li><strong>Implementasi Praktis</strong> - Cara menerapkan denormalisasi</li>
+                    <li><strong>Best Practices</strong> - Tips denormalisasi yang aman</li>
+                </ul>
+
+                <h3>⚖️ Kapan Denormalisasi Diperlukan?</h3>
+                <table class="normalization-table">
+                    <thead>
+                        <tr>
+                            <th>Situasi</th>
+                            <th>Alasan Denormalisasi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Query yang Kompleks</strong></td>
+                            <td>Banyak JOIN operation yang memperlambat query</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Read-Intensive Applications</strong></td>
+                            <td>Aplikasi yang lebih banyak membaca daripada menulis data</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reporting Systems</strong></td>
+                            <td>Sistem laporan yang membutuhkan akses data cepat</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data Warehousing</strong></td>
+                            <td>Penyimpanan data untuk analisis dan business intelligence</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>🔧 Contoh Implementasi Denormalisasi</h3>
+                <div class="code-block">
+                    -- Struktur Normalized (Sebelum Denormalisasi)<br>
+                    CREATE TABLE Orders (<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;order_id INT PRIMARY KEY,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;customer_id INT,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;order_date DATE,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;total_amount DECIMAL(10,2)<br>
+                    );<br><br>
+
+                    CREATE TABLE Order_Details (<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;order_detail_id INT PRIMARY KEY,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;order_id INT,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;product_id INT,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;quantity INT,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;price DECIMAL(10,2)<br>
+                    );<br><br>
+
+                    CREATE TABLE Customers (<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;customer_id INT PRIMARY KEY,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;customer_name VARCHAR(100),<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;email VARCHAR(100)<br>
+                    );<br><br>
+
+                    -- Struktur Denormalized (Setelah Denormalisasi)<br>
+                    CREATE TABLE Orders_Denormalized (<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;order_id INT PRIMARY KEY,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;customer_id INT,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;customer_name VARCHAR(100),<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;customer_email VARCHAR(100),<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;order_date DATE,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;product_name VARCHAR(100),<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;quantity INT,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;unit_price DECIMAL(10,2),<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;total_amount DECIMAL(10,2)<br>
+                    );
+                </div>
+
+                <h3>📊 Perbandingan Performa</h3>
+                <table class="normalization-table">
+                    <thead>
+                        <tr>
+                            <th>Aspek</th>
+                            <th>Normalized</th>
+                            <th>Denormalized</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Query Performance</strong></td>
+                            <td>Lebih lambat (banyak JOIN)</td>
+                            <td>Lebih cepat (minimal JOIN)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data Consistency</strong></td>
+                            <td>Tinggi</td>
+                            <td>Perlu mekanisme sync</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Storage Space</strong></td>
+                            <td>Efisien</td>
+                            <td>Lebih banyak</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Write Performance</strong></td>
+                            <td>Baik</td>
+                            <td>Lebih lambat</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>🎯 Strategi Denormalisasi yang Aman:</h3>
+                <ol>
+                    <li><strong>Materialized Views</strong> - View yang disimpan secara fisik</li>
+                    <li><strong>Summary Tables</strong> - Tabel ringkasan untuk reporting</li>
+                    <li><strong>Calculated Columns</strong> - Kolom yang menyimpan hasil kalkulasi</li>
+                    <li><strong>Redundant Data</strong> - Menyimpan data yang sering diakses</li>
+                </ol>
+
+                <blockquote>
+                    "Denormalisasi bukan tentang mengabaikan normalisasi, tetapi tentang menemukan keseimbangan yang tepat antara struktur data yang ideal dan performa aplikasi yang optimal"
+                </blockquote>
+
+                <div class="conclusion-box">
+                    <h3>📌 Kesimpulan</h3>
+                    <p>Denormalisasi adalah teknik advanced yang digunakan ketika normalisasi murni menyebabkan masalah performa. Dengan memahami kapan dan bagaimana menerapkan denormalisasi, kita dapat membuat sistem database yang tidak hanya terstruktur dengan baik tetapi juga memiliki performa optimal.</p>
+                    <p><strong>Jangan lupa like, subscribe, dan tinggalkan komentar di YouTube untuk pertanyaan!</strong></p>
+                </div>
+            </div>
+
+            <div class="post-navigation">
+                <a href="post12.html" class="nav-btn">← Post Sebelumnya</a>
+                <a href="index.html" class="nav-btn next">Kembali ke Beranda →</a>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Blog Pribadi Cynthia Juniartien &copy; 2025</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+    <script src="js/script.js"></script>
+</body>
+</html>

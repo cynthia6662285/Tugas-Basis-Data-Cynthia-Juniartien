@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengenal SQL, DDL, DML, DCL, dan TCL dalam Basis Data - CYNTHIA JUNIARTIEN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <button class="burger" id="burgerMenu" aria-label="Menu">☰</button>
+        <div class="logo">CYNTHIA JUNIARTIEN</div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <button class="toggle-theme" id="toggleTheme">🌙</button>
+    </header>
+
+    <div class="container">
+        <article class="post-detail fade-in">
+            <div class="post-header">
+                <h1>🧠 Mengenal SQL, DDL, DML, DCL, dan TCL dalam Basis Data</h1>
+                <div class="post-meta-large">Diposting pada 28 Oktober 2025 | Oleh Cynthia Juniartien | Kategori: SQL & Database</div>
+            </div>
+
+            <img src="css/assets/post12.png" alt="SQL, DDL, DML, DCL, dan TCL" class="post-image">
+
+            <div class="post-content">
+                <p>Dalam dunia basis data, istilah seperti SQL, DDL, DML, DCL, dan TCL sering muncul. Semua istilah ini berhubungan erat dengan bagaimana kita membuat, mengelola, dan memanipulasi data di dalam sistem database seperti MySQL, PostgreSQL, atau Oracle.</p>
+
+                <h2>💾 Apa Itu SQL?</h2>
+                <p>SQL (Structured Query Language) adalah bahasa standar untuk mengelola dan memanipulasi basis data relasional. Dengan SQL, kita bisa:</p>
+                <ul>
+                    <li>Membuat dan menghapus tabel</li>
+                    <li>Menambahkan, mengubah, atau menghapus data</li>
+                    <li>Mengatur hak akses pengguna</li>
+                    <li>Mengontrol transaksi agar data tetap konsisten</li>
+                </ul>
+                <p>Sederhananya, SQL adalah bahasa komunikasi antara manusia dan database.</p>
+
+                <div class="code-block">
+                    -- Contoh perintah SQL:<br>
+                    SELECT * FROM Pelanggan WHERE Kota = 'Karawang';
+                </div>
+                <p>Perintah di atas digunakan untuk menampilkan semua data pelanggan yang berasal dari Karawang.</p>
+
+                <h2>🧱 1. DDL (Data Definition Language)</h2>
+                <p>DDL adalah bagian dari SQL yang digunakan untuk mendefinisikan struktur database seperti tabel, kolom, dan relasi.</p>
+                <p><strong>🔹 Tujuan utama DDL adalah membentuk "kerangka" database.</strong></p>
+
+                <h3>Contoh perintah DDL:</h3>
+                <table class="normalization-table">
+                    <thead>
+                        <tr>
+                            <th>Perintah</th>
+                            <th>Fungsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>CREATE</strong></td>
+                            <td>Membuat tabel atau database baru</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ALTER</strong></td>
+                            <td>Mengubah struktur tabel (misalnya menambah kolom)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DROP</strong></td>
+                            <td>Menghapus tabel atau database</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TRUNCATE</strong></td>
+                            <td>Menghapus semua isi tabel tanpa menghapus strukturnya</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="code-block">
+                    -- 📘 Contoh:<br>
+                    CREATE TABLE Produk (<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;ID_Produk INT PRIMARY KEY,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Nama_Produk VARCHAR(100),<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Harga DECIMAL(10,2)<br>
+                    );
+                </div>
+
+                <h2>✍️ 2. DML (Data Manipulation Language)</h2>
+                <p>DML berfungsi untuk memanipulasi data di dalam tabel, bukan strukturnya. Bagian ini paling sering digunakan dalam aktivitas sehari-hari seperti menambah, mengedit, dan menampilkan data.</p>
+
+                <h3>Contoh perintah DML:</h3>
+                <table class="normalization-table">
+                    <thead>
+                        <tr>
+                            <th>Perintah</th>
+                            <th>Fungsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>SELECT</strong></td>
+                            <td>Menampilkan data dari tabel</td>
+                        </tr>
+                        <tr>
+                            <td><strong>INSERT</strong></td>
+                            <td>Menambahkan data baru</td>
+                        </tr>
+                        <tr>
+                            <td><strong>UPDATE</strong></td>
+                            <td>Mengubah data yang sudah ada</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DELETE</strong></td>
+                            <td>Menghapus data</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="code-block">
+                    -- 📘 Contoh:<br>
+                    INSERT INTO Produk (ID_Produk, Nama_Produk, Harga)<br>
+                    VALUES (1, 'Pomade Super Hold', 45000);
+                </div>
+
+                <h2>🔐 3. DCL (Data Control Language)</h2>
+                <p>DCL digunakan untuk mengatur hak akses dan keamanan data di dalam database. Bagian ini penting jika database digunakan oleh banyak pengguna dengan tingkat akses berbeda-beda.</p>
+
+                <h3>Contoh perintah DCL:</h3>
+                <table class="normalization-table">
+                    <thead>
+                        <tr>
+                            <th>Perintah</th>
+                            <th>Fungsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>GRANT</strong></td>
+                            <td>Memberikan hak akses ke pengguna</td>
+                        </tr>
+                        <tr>
+                            <td><strong>REVOKE</strong></td>
+                            <td>Menghapus hak akses dari pengguna</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="code-block">
+                    -- 📘 Contoh:<br>
+                    GRANT SELECT, INSERT ON Produk TO user_daino;<br>
+                    REVOKE DELETE ON Produk FROM user_daino;
+                </div>
+
+                <h2>🔄 4. TCL (Transaction Control Language)</h2>
+                <p>TCL berhubungan dengan pengelolaan transaksi dalam database — memastikan data tetap konsisten ketika ada banyak perubahan sekaligus.</p>
+                <p>Transaksi biasanya mencakup lebih dari satu perintah DML, dan semua perintah itu harus berhasil semua atau batal semua.</p>
+
+                <h3>Contoh perintah TCL:</h3>
+                <table class="normalization-table">
+                    <thead>
+                        <tr>
+                            <th>Perintah</th>
+                            <th>Fungsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>COMMIT</strong></td>
+                            <td>Menyimpan semua perubahan transaksi</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ROLLBACK</strong></td>
+                            <td>Membatalkan transaksi (mengembalikan data ke kondisi awal)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SAVEPOINT</strong></td>
+                            <td>Menandai titik tertentu di dalam transaksi untuk rollback sebagian</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="code-block">
+                    -- 📘 Contoh:<br>
+                    START TRANSACTION;<br><br>
+                    
+                    UPDATE Produk SET Harga = 40000 WHERE ID_Produk = 1;<br>
+                    DELETE FROM Pelanggan WHERE ID_Pelanggan = 5;<br><br>
+                    
+                    ROLLBACK; -- Membatalkan semua perubahan di atas
+                </div>
+
+                <div class="conclusion-box">
+                    <h2>🧩 Kesimpulan</h2>
+                    <table class="normalization-table">
+                        <thead>
+                            <tr>
+                                <th>Jenis SQL</th>
+                                <th>Kepanjangan</th>
+                                <th>Fungsi Utama</th>
+                                <th>Contoh Perintah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>DDL</strong></td>
+                                <td>Data Definition Language</td>
+                                <td>Mengatur struktur database</td>
+                                <td>CREATE, ALTER, DROP</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DML</strong></td>
+                                <td>Data Manipulation Language</td>
+                                <td>Mengolah data di dalam tabel</td>
+                                <td>SELECT, INSERT, UPDATE, DELETE</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DCL</strong></td>
+                                <td>Data Control Language</td>
+                                <td>Mengatur hak akses dan keamanan</td>
+                                <td>GRANT, REVOKE</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TCL</strong></td>
+                                <td>Transaction Control Language</td>
+                                <td>Mengelola transaksi database</td>
+                                <td>COMMIT, ROLLBACK, SAVEPOINT</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <blockquote>
+                    "Memahami perbedaan antara DDL, DML, DCL, dan TCL membuat kita lebih mudah dalam merancang sistem database yang efisien, aman, dan stabil. SQL bukan hanya soal mengambil data, tetapi juga tentang bagaimana menjaga integritas, keamanan, dan performa dari data itu sendiri."
+                </blockquote>
+
+                <h2>✨ Penutup</h2>
+                <p>Dengan memahami berbagai komponen SQL ini, kita dapat lebih efektif dalam mengelola database dan memastikan data tetap aman, konsisten, dan terstruktur dengan baik.</p>
+            </div>
+
+            <div class="post-navigation">
+                <a href="post11.html" class="nav-btn">← Post Sebelumnya</a>
+                <a href="index.html" class="nav-btn next">Kembali ke Beranda →</a>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Blog Pribadi Cynthia Juniartien &copy; 2025</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+    <script src="js/script.js"></script>
+</body>
+</html>
